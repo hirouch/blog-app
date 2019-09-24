@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get "/posts/:id/rankdown", to: "posts#rankdown"
 
   get   'users/:id'   =>  'users#show'
-  
+
 
   resources :posts do
     post :confirm, action: :confirm_new, on: :new

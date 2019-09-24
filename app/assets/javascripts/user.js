@@ -1,3 +1,6 @@
 $(function(){
-  $('#answer_progress').width(gon.answer_valuenow + '%');
+  $('.answer_progress').each((_index, elem) => {
+    const progress = $(elem).text().trim();
+    $(elem).width(progress)
+  });
 });

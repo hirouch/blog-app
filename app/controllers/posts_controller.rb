@@ -7,14 +7,14 @@ class PostsController < ApplicationController
     # @posts = Post.where(params["genres"])
     genre_array = []
     params[:genrelist].each do | di1,di2 |
-      
+
       # チェックボックスにチェックがついている場合
       if di2 == "1"
         genre_array << di1
         # DBのtitleカラムにタイトルを格納し保存
         # @get_game.save
       end
-    end 
+    end
     @posts = Post.where(genres: genre_array).order("created_at DESC").page(params[:page]).per(10)
 
     # binding.pry
@@ -38,7 +38,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    binding.pry
     Post.create(title: post_params[:title], body: post_params[:body], user_id: current_user.id, deck_id: post_params[:deck_id])
     @quote = Quote.where( 'id >= ?', rand(Quote.first.id..Quote.last.id) ).first
   end
